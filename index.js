@@ -13,9 +13,7 @@ function isLess(filename) {
 }
 
 
-module.exports = function (builder, options) {
-
-	options = options || {};
+module.exports = function (builder) {
 
 	builder.hook('before styles', function (builder, callback) {
 		if (!builder.config.styles) {
@@ -23,7 +21,7 @@ module.exports = function (builder, options) {
 		}
 
 		var files = builder.config.styles;
-		var parser = new less.Parser(options.env);
+		var parser = new less.Parser(builder.config.less);
 
 		async.forEach(files, function (file, cb) {
 
