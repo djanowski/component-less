@@ -26,7 +26,7 @@ module.exports = function (builder) {
 		async.forEach(files, function (file, cb) {
 
 			var stylesheet = builder.path(file);
-			var cssConfig = options.cssConfig || {};
+			var cssConfig = {};
 
 			if (!fs.existsSync(stylesheet)) {
 				return cb(new Error("'" + stylesheet + "'  doesn't exist."));
