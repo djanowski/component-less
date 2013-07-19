@@ -20,8 +20,13 @@ module.exports = function (builder) {
 			return callback();
 		}
 
+    var config = builder.json().less;
+
+    config.paths.push(builder.dir);
+
 		var files = builder.config.styles;
-		var parser = new less.Parser(builder.config.less);
+
+		var parser = new less.Parser(config);
 
 		async.forEach(files, function (file, cb) {
 
